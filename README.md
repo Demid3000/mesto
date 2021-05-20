@@ -23,4 +23,4 @@
 
 **Ссылка на сайт**
 
-:white_check_mark:[Тыкни на меня :)] https://demid3000.github.io/mesto/
+:white_check_mark:[Тыкни на меня :)](https://demid3000.github.io/mesto/)
