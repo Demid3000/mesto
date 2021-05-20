@@ -4,7 +4,7 @@
     display: grid;
     grid-auto-columns: 17% 1fr 21%;
     grid-template-areas:
-    "avatar info info add-button";
+    "avatar info add-button";
     align-items: center;
 }
 
