@@ -1,0 +1,11 @@
+.elements__like_active{
+    cursor: pointer;
+    background-image: url(/images/Like/blackLike.png);
+    width: 100%;
+    max-width: 22px;
+    height: 19px;
+}
+
+.elements__like_active:hover{
+    opacity: 0.5;
+}

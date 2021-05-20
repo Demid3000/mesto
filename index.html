@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Mesto</title>
+</head>
+
+<body class="root">
+  <header class="header">
+    <img class="header__logo" src="./images/logo.png" alt="Mesto">
+    <div class="header__line"></div>
+  </header>
+  <main class="content">
+    <section class="profile">
+      <div class="profile__avatar"></div>
+      <div class="profile__info">
+        <div class="profile__info_box">
+          <h1 class="profile__info_name" value="">Жак-Ив Кусто</h1>
+          <p class="profile__info_text" value="">Исследователь океана</p>
+        </div>
+        <nav action="#" class="profile__main-nav">
+          <button class="main-nav_edit-button popup-open" aria-label="Открыть popup"><img src="./images/edit.png" alt="Редактировать"></button>
+        </nav>
+      </div>
+      <button class="profile__add-button"><img src="./images/Vector.png" alt="Добавить"></button>
+    </section>
+
+    <div class="elements">
+      <div class="element"><img src="./images/Church.png" alt="Карачаевск" class="elements__image">
+        <div class="elements__group">
+          <p class="elements__text">Карачаевск</p>
+          <div class="elements__like"></div>
+        </div>
+      </div>
+      <div class="element"><img src="./images/mountain.png" alt="Гора Эльбрус" class="elements__image">
+        <div class="elements__group">
+          <p class="elements__text">Гора Эльбрус</p>
+          <div class="elements__like"></div>
+        </div>
+      </div>
+      <div class="element"><img src="./images/desert.png" alt="Домбай" class="elements__image">
+        <div class="elements__group">
+          <p class="elements__text">Домбай</p>
+          <div class="elements__like"></div>
+        </div>
+      </div>
+      <div class="element"><img src="./images/bridge.jpg" alt="Мост" class="elements__image">
+        <div class="elements__group">
+          <p class="elements__text">Золотые Ворота</p>
+          <div class="elements__like"></div>
+        </div>
+      </div>
+      <div class="element"><img src="./images/moon.jpg" alt="Луна" class="elements__image">
+        <div class="elements__group">
+          <p class="elements__text">Луна</p>
+          <div class="elements__like"></div>
+        </div>
+      </div>
+      <div class="element"><img src="./images/nightSpace.jpg" alt="Ночной космос" class="elements__image">
+        <div class="elements__group">
+          <p class="elements__text">Ночной красивый космос</p>
+          <div class="elements__like"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <h2 class="footer__text">&copy;2020 Mesto Russia</h2></footer>
+
+    <form class="popup">
+      <div class="popup__body">
+        <div class="popup__container" name="popup">
+          <button type="button" class="popup__close" aria-label="Закрыть popup"></button>
+          <div class="popup__box">
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <input type="text" name="name" class="popup__name" value="">
+            <input type="text" name="text" class="popup__text"  value="">
+          </div>
+            <button type="submit" class="popup__submit-button">Сохранить</button>
+        </div>
+      </div>
+    </form>
+    <script src="/script/script.js"></script>
+</body>
+</html>
