@@ -1,12 +1,12 @@
 .profile__info{
     display: flex;
-    justify-content: space-between;
-    width: 336px;
+    width: 100%;
     grid-area: info;
 }
 
 @media screen and (max-width: 768px) {
     .profile__info {
+        justify-content: center;
     padding: 22.25px 0 36px 0;
     margin: 0  auto;
     }
