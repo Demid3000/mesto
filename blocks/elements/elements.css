@@ -1,9 +1,10 @@
 .elements{
     padding-top: 47.25px;
+    width: 100%;
     max-width: 880px;
     display: grid;
     margin: 0 auto;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 32% 32% 32%;
     gap: 17px;
 }
 
