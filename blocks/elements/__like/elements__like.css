@@ -1,6 +1,6 @@
 .elements__like{
     cursor: pointer;
-    background-image: url(/images/Like/whiteLike.jpg);
+    background-image: url(../images/Like/whiteLike.jpg);
     width: 100%;
     max-width: 22px;
     height: 19px;
