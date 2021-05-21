@@ -13,9 +13,9 @@
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__info/profile__info.css);
-@import url(../blocks/profile/__info/__box/profile__info__box.css);
-@import url(../blocks/profile/__info/__box/box-name/profile__info__box-name.css);
-@import url(../blocks/profile/__info/__box/box-text/profile__info__box-text.css);
+@import url(../blocks/profile/__box/profile__box.css);
+@import url(../blocks/profile/__box/box-name/profile__box-name.css);
+@import url(../blocks/profile/__box/box-text/profile__box-text.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
 /*-----ELEMENTS-----*/
