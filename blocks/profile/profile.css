@@ -10,7 +10,7 @@
 
 @media screen and (max-width: 768px) {
     .profile {
-    grid-auto-columns: 1fr 1fr 1fr ;
+    grid-auto-columns: 1fr 1fr 1fr;
     grid-template-areas:
     "avatar" 
     "info" 
