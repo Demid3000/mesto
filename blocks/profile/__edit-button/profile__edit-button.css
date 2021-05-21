@@ -1,4 +1,4 @@
-.main-nav_edit-button{
+.profile__edit-button{
     cursor: pointer;
     max-width: 100%;
     width: 24px;
@@ -11,17 +11,17 @@
     grid-area: edit-button;
 }
 
-.main-nav_edit-button:hover{
+.profile__edit-button:hover{
     opacity: 0.6;
 }
 
 @media screen and (max-width: 768px) {
-    .main-nav_edit-button {
+    .profile__edit-button {
         margin: 10px 0 0 10px;
         width: 18px;
         height: 18px;
     }
-    .main-nav_edit-button img{
+    .profile__edit-button img{
         padding-bottom: 2px;
     }
 }
