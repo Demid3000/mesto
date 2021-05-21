@@ -1,4 +1,4 @@
-.profile__info_box-name{
+.profile__info__box-name{
     margin:0;
     padding-bottom: 16px;
     font-family: Inter, Arial, sans-serif;
@@ -12,7 +12,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .profile__info_box-name {
+    .profile__info__box-name {
     padding-bottom: 14px;
     font-style: normal;
     font-weight: 500;
