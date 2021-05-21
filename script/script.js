@@ -22,8 +22,8 @@ function addLikeActive(e){
 
 let nameInput = document.querySelector('.popup__name');
 let jobInput = document.querySelector('.popup__text');
-let profileInfoName = document.querySelector('.profile__info_box-name');
-let profileInfoText = document.querySelector('.profile__info_box-text');
+let profileInfoName = document.querySelector('.profile__box-name');
+let profileInfoText = document.querySelector('.profile__box-text');
 function formSubmitHandler (evt) {
     evt.preventDefault();
     if(nameInput.value || jobInput.value){
