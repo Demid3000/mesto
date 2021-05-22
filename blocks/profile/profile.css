@@ -3,7 +3,8 @@
     max-width: 880px;
     margin: 0 auto;
     display: grid;
-    grid-auto-columns: 17% 1fr 21%;
+    grid-auto-columns: 120px 1fr minmax(50px, 150px);
+    gap:30px;
     grid-template-areas:
     "avatar info add-button";
     align-items: center;

@@ -1,4 +1,5 @@
 .profile__box-name{
+    max-width: 450px;
     margin:0;
     padding-bottom: 16px;
     font-family: Inter, Arial, sans-serif;

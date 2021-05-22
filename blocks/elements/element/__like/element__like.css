@@ -1,0 +1,12 @@
+.element__like{
+    background: url(../../../../images/like/whitelike.svg);
+    border:none;
+    cursor: pointer;
+    width: 100%;
+    max-width: 22px;
+    height: 19px;
+}
+
+.element__like:hover{
+    opacity: 0.5;
+}

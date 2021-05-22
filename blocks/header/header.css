@@ -4,10 +4,10 @@
     padding: 45px 0 0px;
     display: flex;
     flex-direction: column;
-    border-bottom: 1px solid #545454;
+    border-bottom: 1px solid rgba(54, 54, 54, .7);
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
     .header {
-        padding: 28px 0 42px;
+        padding: 0;
     }
 }
