@@ -19,8 +19,9 @@ function addLikeActive(e){
     }
 }
 
+let popupForm = document.querySelector('.popup__form');
 let nameInput = document.querySelector('.popup__name');
-let jobInput = document.querySelector('.popup__text');
+let jobInput = document.querySelector('.popup__job');
 let profileInfoName = document.querySelector('.profile__box-name');
 let profileInfoText = document.querySelector('.profile__box-text');
 function formSubmitHandler (evt) {
@@ -35,4 +36,4 @@ function formSubmitHandler (evt) {
     }
     togglePopup
 }
-popup.addEventListener('submit', formSubmitHandler); //popup это у меня и есть форма
+popupForm.addEventListener('submit', formSubmitHandler);
