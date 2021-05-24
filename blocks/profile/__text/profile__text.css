@@ -1,5 +1,5 @@
-.profile__box-text{
-    margin: 0;
+.profile__text{
+    margin: 16px 0 0;
     max-width: 336px;
     font-family: Inter, Arial, sans-serif;
     font-style: normal;
@@ -12,12 +12,9 @@
 }
 
 @media screen and (max-width: 768px) {
-    .profile__box-text {
-    font-style: normal;
-    font-weight: normal;
+    .profile__text {
     font-size: 14px;
     line-height: 17px;
     text-align: center;
-        
     }
 }

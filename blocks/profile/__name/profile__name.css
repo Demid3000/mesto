@@ -1,7 +1,6 @@
-.profile__box-name{
-    max-width: 450px;
+.profile__name{
+    max-width: 294px;
     margin:0;
-    padding-bottom: 16px;
     font-family: Inter, Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -13,10 +12,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .profile__box-name {
-    padding-bottom: 14px;
-    font-style: normal;
-    font-weight: 500;
+    .profile__name {
     font-size: 27px;
     line-height: 33px;
     text-align: center;
