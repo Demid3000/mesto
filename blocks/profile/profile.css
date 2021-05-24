@@ -16,8 +16,8 @@
     grid-auto-columns: 1fr;
     grid-template-rows: 120px 1fr 122px;
     grid-template-areas:
-    "avatar" 
-    "info" 
+    "avatar"
+    "info"
     "add-button";
     }
 }
