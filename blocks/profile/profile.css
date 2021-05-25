@@ -12,7 +12,7 @@
 
 @media screen and (max-width: 768px) {
     .profile {
-    padding: 40px 0 0;    
+    padding: 40px 0 0;
     gap: 0;
     grid-auto-columns: 1fr;
     grid-template-rows: 120px 1fr 122px;
