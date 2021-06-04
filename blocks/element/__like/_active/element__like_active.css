@@ -1,3 +1,4 @@
 .element__like_active{
-    background-image: url(../../../images/like/blacklike.svg);
+    background-image: url(../../../../images/like/blacklike.svg);
+    padding: 0;
 }

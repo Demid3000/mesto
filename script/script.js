@@ -1,30 +1,41 @@
 "use strict";
-let openPopup = document.querySelector('.profile__edit-button');
-let popup = document.querySelector('.popup');
-let closePopup = popup.querySelector('.popup__close');
+const openEditPopup = document.querySelector('.profile__edit-button');
+const editPopup = document.querySelector('.popup_type_edit');
+const editPopupCloseButton = editPopup.querySelector('.popup__close');
+const openAddPopup = document.querySelector('.profile__add-button');
+const addButton = document.querySelector('.popup_type_add');
+const addPopupCloseButton = addButton.querySelector('.popup__close');
 
-openPopup.addEventListener('click', togglePopup);
-closePopup.addEventListener('click', togglePopup);
-function togglePopup(event){
-    popup.classList.toggle('popup_opened');
+openEditPopup.addEventListener('click', () => togglePopup(editPopup));
+editPopupCloseButton.addEventListener('click', () => togglePopup(editPopup));
+
+openAddPopup.addEventListener('click', () => togglePopup(addButton));
+addPopupCloseButton.addEventListener('click', () => togglePopup(addButton));
+
+function togglePopup(e){
+    e.classList.toggle('popup_opened');
+};
+
+// Лайки
+let i = 0; 
+let like = document.querySelectorAll('.element__like');
+like.forEach((item) => {
+    item.addEventListener('click', addLikeActive);
+});
+
+function addLikeActive(e){
+    if (e.target === e.currentTarget){
+        e.target.classList.toggle('element__like_active');
+    }
 }
-// let i = 0; 
-// let like = document.querySelectorAll('.element__like');
-// for(i = 0; i < like.length; i++){
-//     like[i].addEventListener('click', addLikeActive);
-// }
-// function addLikeActive(e){
-//     if (e.target === e.currentTarget){
-//         e.target.classList.toggle('element__like_active');
-//     }
-// }
 
+// Форма
 let popupForm = document.querySelector('.popup__form');
-let nameInput = document.querySelector('#name');
+function formSubmitHandler (evt) {
+let nameInput = document.querySelector('#lastname');
 let jobInput = document.querySelector('#job');
 let profileInfoName = document.querySelector('.profile__name');
 let profileInfoText = document.querySelector('.profile__text');
-function formSubmitHandler (evt) {
     evt.preventDefault();
     profileInfoName.textContent = nameInput.value; 
     profileInfoText.textContent = jobInput.value; 
