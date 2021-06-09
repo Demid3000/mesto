@@ -1,0 +1,16 @@
+.link-opacity {
+    transition: opacity .5s;
+    cursor: pointer;
+  }
+  
+  .link-opacity:hover {
+    opacity: .6;
+  }
+  
+  .element__like.link-opacity:hover {
+    opacity: .5;
+  }
+  
+  .popup__submit-button.link-opacity:hover {
+    opacity: .8;
+  }

@@ -17,10 +17,6 @@
     margin: 18px auto 0;
 }
 
-.popup__submit-button:hover{
-    opacity: 0.5;
-}
-
 @media screen and (max-width: 767px) {
     .popup__submit-button {
     margin: 18px auto 0;

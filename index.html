@@ -17,11 +17,11 @@
     <section class="profile">
       <img class="profile__avatar" src="./images/i.jpg" alt="Аватарка">
       <div class="profile__info">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button type="button" class="profile__edit-button" aria-label="Открыть popup"><img src="./images/pencil.svg" alt="Редактировать"></button>
-          <p class="profile__text">Исследователь океана</p>
+        <h1 class="profile__name">Демид</h1>
+        <button type="button" class="profile__edit-button link-opacity" aria-label="Открыть popup"><img src="./images/pencil.svg" alt="Редактировать"></button>
+        <p class="profile__text">Исследователь океана</p>
       </div>
-      <button class="profile__add-button"></button>
+      <button class="profile__add-button link-opacity"></button>
     </section>
 
     <div class="elements">
@@ -31,56 +31,53 @@
     <p class="footer__text">&copy;2020 Mesto Russia</p>
   </footer>
 
-  <section class="popup popup_type_edit">
-      <div class="popup__container">
-        <button type="button" class="popup__close" aria-label="Закрыть popup"></button>
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <form name="popup-form" class="popup__form popup_form_edit">
-          <input type="text" name="form-name" id="lastname" class="popup__input" value="Жак-Ив Кусто" placeholder="Имя и фамилия">
-          <input type="text" name="form-job" id="job" class="popup__input" value="Исследователь океана" placeholder="О себе">
-          <button type="submit" class="popup__submit-button">Сохранить</button>
-        </form>
-      </div>
+  <section class="popup edit">
+    <div class="popup__container">
+      <button type="button" aria-label="Закрыть попап редактирования профиля" class="popup__close link-opacity"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form name="form" action="#" class="popup__form popup_form_edit">
+        <input id="lastname" name="form-name" type="text" placeholder="Ваше имя" value="Демид" class="popup__input" />
+        <input id="job" name="form-about" type="text" placeholder="Ваш статус" value="Индустриальный турист" class="popup__input" />
+        <button type="submit" name="form-submit" class="popup__submit-button link-opacity">
+          Сохранить
+        </button>
+      </form>
+    </div>
   </section>
+  </div>
 
   <section class="popup new">
     <div class="popup__container">
-      <button type="button" class="popup__close" aria-label="Закрыть popup"></button>
+      <button type="button" aria-label="Закрыть попап новой карточки" class="popup__close link-opacity"></button>
       <h2 class="popup__title">Новое место</h2>
-      <form name="popup-form" class="popup__form popup_form_add">
-        <input type="text" name="form-name" id="name" class="popup__input"  placeholder="Название">
-        <input type="text" name="form-link" id="link" class="popup__input"  placeholder="Ссылка на картинку">
-        <button type="submit" class="popup__submit-button">Создать</button>
+      <form name="form" action="#" class="popup__form popup_form_add">
+        <input id="place" name="form-place" type="text" placeholder="Название" value="" class="popup__input" />
+        <input id="link" name="form-resource" type="text" placeholder="Ссылка на картинку" value="" class="popup__input" />
+        <button type="submit" name="form-submit" class="popup__submit-button link-opacity">
+          Создать
+        </button>
       </form>
     </div>
-</section>
+  </section>
 
-<section class="popup image">
-  <div class="popup__container">
-    <button
-      type="button"
-      aria-label="Закрыть попап новой карточки"
-      class="popup__close link-opacity"
-    ></button>
-    <img
-      class="popup__image"
-      src="./images/photo/moscow.jpg"
-      alt="Москва"
-    />
-    <h2 class="popup__subtitle">Новое место</h2>
-  </div>
-</section>
-
-<template class="template">
-  <div class="element">
-    <button type="button" class="element__trash link-opacity"></button>
-    <img alt="Картинка" class="element__image">
-    <div class="element__group">
-      <p class="element__text"></p>
-      <button type="button" class="element__like"></button>
+  <section class="popup image">
+    <div class="popup__img-container">
+      <button type="button" aria-label="Закрыть попап новой карточки" class="popup__close link-opacity"></button>
+      <img class="popup__image" src="./images/photo/moscow.jpg" alt="Москва" />
+      <h2 class="popup__subtitle">Новое место</h2>
     </div>
-  </div>
-</template>
+  </section>
+
+  <template class="template">
+    <div class="element">
+      <button type="button" class="element__trash link-opacity"></button>
+      <img alt="Картинка" class="element__image">
+      <div class="element__group">
+        <p class="element__text"></p>
+        <button type="button" class="element__like"></button>
+      </div>
+    </div>
+  </template>
   <script src="script/script.js"></script>
 </body>
 
