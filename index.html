@@ -25,42 +25,6 @@
     </section>
 
     <div class="elements">
-      <div class="element"><img src="./images/church.png" alt="Карачаевск" class="element__image">
-        <div class="element__group">
-          <p class="element__text">Карачаевск</p>
-          <button type="button" class="element__like"></button>
-        </div>
-      </div>
-      <div class="element"><img src="./images/mountain.png" alt="Гора Эльбрус" class="element__image">
-        <div class="element__group">
-          <p class="element__text">Гора Эльбрус</p>
-          <button type="button" class="element__like"></button>
-        </div>
-      </div>
-      <div class="element"><img src="./images/desert.png" alt="Домбай" class="element__image">
-        <div class="element__group">
-          <p class="element__text">Домбай</p>
-          <button type="button" class="element__like"></button>
-        </div>
-      </div>
-      <div class="element"><img src="./images/bridge.jpg" alt="Мост" class="element__image">
-        <div class="element__group">
-          <p class="element__text">Золотые Ворота</p>
-          <button type="button" class="element__like"></button>
-        </div>
-      </div>
-      <div class="element"><img src="./images/moon.jpg" alt="Луна" class="element__image">
-        <div class="element__group">
-          <p class="element__text">Луна</p>
-          <button type="button" class="element__like"></button>
-        </div>
-      </div>
-      <div class="element"><img src="./images/nightSpace.jpg" alt="Ночной космос" class="element__image">
-        <div class="element__group">
-          <p class="element__text">Ночной красивый космос</p>
-          <button type="button" class="element__like"></button>
-        </div>
-      </div>
     </div>
   </main>
   <footer class="footer">
@@ -71,7 +35,7 @@
       <div class="popup__container">
         <button type="button" class="popup__close" aria-label="Закрыть popup"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form name="popup-form" class="popup__form">
+        <form name="popup-form" class="popup__form popup_form_edit">
           <input type="text" name="form-name" id="lastname" class="popup__input" value="Жак-Ив Кусто" placeholder="Имя и фамилия">
           <input type="text" name="form-job" id="job" class="popup__input" value="Исследователь океана" placeholder="О себе">
           <button type="submit" class="popup__submit-button">Сохранить</button>
@@ -79,11 +43,11 @@
       </div>
   </section>
 
-  <section class="popup popup_type_add">
+  <section class="popup new">
     <div class="popup__container">
       <button type="button" class="popup__close" aria-label="Закрыть popup"></button>
       <h2 class="popup__title">Новое место</h2>
-      <form name="popup-form" class="popup__form">
+      <form name="popup-form" class="popup__form popup_form_add">
         <input type="text" name="form-name" id="name" class="popup__input"  placeholder="Название">
         <input type="text" name="form-link" id="link" class="popup__input"  placeholder="Ссылка на картинку">
         <button type="submit" class="popup__submit-button">Создать</button>
@@ -91,6 +55,32 @@
     </div>
 </section>
 
+<section class="popup image">
+  <div class="popup__container">
+    <button
+      type="button"
+      aria-label="Закрыть попап новой карточки"
+      class="popup__close link-opacity"
+    ></button>
+    <img
+      class="popup__image"
+      src="./images/photo/moscow.jpg"
+      alt="Москва"
+    />
+    <h2 class="popup__subtitle">Новое место</h2>
+  </div>
+</section>
+
+<template class="template">
+  <div class="element">
+    <button type="button" class="element__trash link-opacity"></button>
+    <img alt="Картинка" class="element__image">
+    <div class="element__group">
+      <p class="element__text"></p>
+      <button type="button" class="element__like"></button>
+    </div>
+  </div>
+</template>
   <script src="script/script.js"></script>
 </body>
 
