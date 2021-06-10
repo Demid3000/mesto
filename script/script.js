@@ -12,8 +12,8 @@ const popups = document.querySelectorAll(".popup");
 const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
 
-const editForm = document.querySelector(".popup_form_edit");
-const newCard = document.querySelector(".popup_form_add");
+const editForm = document.querySelector(".popup_form-edit");
+const newCard = document.querySelector(".popup_form-add");
 
 let nameInput = document.querySelector('#lastname');
 let jobInput = document.querySelector('#job');
