@@ -144,6 +144,6 @@ newCard.addEventListener("submit", (evt) => {
   const inputValue = { text: place.value, link: link.value };
   renderItem(inputValue);
   closePopup(newCardPopup);
-  newForm.reset();
+  newCard.reset();
 });
 renderItems()
