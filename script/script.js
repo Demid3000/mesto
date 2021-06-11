@@ -15,10 +15,10 @@ const addButton = document.querySelector(".profile__add-button");
 const editForm = document.querySelector(".popup__form-edit");
 const newCard = document.querySelector(".popup__form-add");
 
-let nameInput = document.querySelector('#lastname');
-let jobInput = document.querySelector('#job');
-let profileInfoName = document.querySelector('.profile__name');
-let profileInfoText = document.querySelector('.profile__text');
+const nameInput = document.querySelector('#lastname');
+const jobInput = document.querySelector('#job');
+const profileInfoName = document.querySelector('.profile__name');
+const profileInfoText = document.querySelector('.profile__text');
 
 // добавление карточек и форму
 const initialCards = [
@@ -123,7 +123,8 @@ popups.forEach(function (item) {
 function addOpenImageHandler(card, item) {
     card.querySelector(".element__image").addEventListener("click", (card) => {
     const subtitle = image.querySelector(".popup__subtitle");
-    image.querySelector(".popup__image").src = item.link;
+    const popupImage = image.querySelector(".popup__image");
+    popupImage.src = item.link;
     subtitle.textContent = item.text;
     subtitle.alt = item.text;
     openPopup(image);
