@@ -1,5 +1,6 @@
 .profile__name{
-    width: 294px;
+    max-width: 294px;
+    min-width: 100px;
     margin:0;
     font-family: Inter, Arial, sans-serif;
     font-style: normal;
