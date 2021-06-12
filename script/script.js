@@ -99,8 +99,8 @@ function closePopup(item) {
 
 //Проверка нажатия кнопки редактирования профиля
 editButton.addEventListener("click", () => {
-  profileInfoName.textContent = nameInput.value; 
-  profileInfoText.textContent = jobInput.value;
+  nameInput.value = profileInfoName.textContent;  
+  jobInput.value = profileInfoText.textContent;
   openPopup(editPopup);
 });
 
@@ -120,12 +120,12 @@ popups.forEach(function (item) {
 });
 
 //Открытие картинки
+const subtitle = image.querySelector(".popup__subtitle");
+const popupImage = image.querySelector(".popup__image");
 function addOpenImageHandler(card, item) {
     card.querySelector(".element__image").addEventListener("click", (card) => {
-    const subtitle = image.querySelector(".popup__subtitle");
-    const popupImage = image.querySelector(".popup__image");
     popupImage.src = item.link;
-    subtitle.textContent = item.text;
+    popupImage.textContent = item.text;
     subtitle.alt = item.text;
     openPopup(image);
   });
