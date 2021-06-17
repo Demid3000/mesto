@@ -2,13 +2,21 @@
     border: none;
     background: none;
     border-bottom: 1px solid rgba(0,0,0,0.2);
-    margin-bottom: 30px;
     width: 358px;
     height: 27px;
     font-family: Inter, Arial, sans-serif;
     font-size: 14px;
     line-height: 17px;
 }
+
+.popup__input:invalid {
+    border-bottom: #ff0000 1px solid;
+  }
+  
+  .popup__input:focus {
+    outline: none;
+    border: 3px solid rgb(0, 96, 223);
+  }
 
 @media screen and (max-width: 767px) {
     .popup__input {

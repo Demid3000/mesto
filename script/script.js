@@ -21,33 +21,6 @@ const profileInfoName = document.querySelector('.profile__name');
 const profileInfoText = document.querySelector('.profile__text');
 
 // добавление карточек и форму
-const initialCards = [
-    {
-    text: 'Архыз',
-    link: 'http://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-    text: 'Челябинская область',
-    link: 'http://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-    text: 'Иваново',
-    link: 'http://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-    text: 'Камчатка',
-    link: 'http://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-    text: 'Холмогорский район',
-    link: 'http://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-    text: 'Байкал',
-    link: 'http://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-    ];
-
 function renderItems() {
     initialCards.forEach((item) => {
       renderItem(item);
@@ -133,10 +106,10 @@ function addOpenImageHandler(card, item) {
 
 //Проверка в попапе редактирования профиля
 editForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  profileInfoName.textContent = nameInput.value;
-  profileInfoText.textContent = jobInput.value;
-  closePopup(editPopup);
+    evt.preventDefault();
+    profileInfoName.textContent = nameInput.value;
+    profileInfoText.textContent = jobInput.value;
+    closePopup(editPopup);
 });
 
 //Проверка в попапе добавления карточки
@@ -146,5 +119,34 @@ newCard.addEventListener("submit", (evt) => {
   renderItem(inputValue);
   closePopup(newCardPopup);
   newCard.reset();
+  inputValue.addEventListener('keydown', keyHandler);
 });
 renderItems()
+
+//Проверка в input'e на нажатие Enter 
+function keyHandler(evt) {
+  if(evt.key === 'Enter'){
+    editForm(nameInput.value, jobInput.value);
+    newCard(inputValue.value);
+  }
+}
+nameInput.addEventListener('keydown', keyHandler);
+jobInput.addEventListener('keydown', keyHandler);
+
+//Проверка какой попап надо закрыть
+popups.forEach(function (item) {
+  item.addEventListener("mousedown", (evt) => {
+    if (
+      evt.target.classList.contains("popup__close-button") ||
+      evt.target.classList.contains("popup")
+    ) {
+      closePopup(item);
+    }
+  });
+  //Закрываем popup при нажатии на Esc
+  document.addEventListener("keydown", (evt) => {
+    if (evt.keyCode === 27) {
+      closePopup(item);
+    }
+  });
+});
