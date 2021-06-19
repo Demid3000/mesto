@@ -5,9 +5,8 @@ const showInputError = (formElement, inputElement, errorMessage, rest) => {
 };
 const hideInputError = (formElement, inputElement, rest) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  debugger
-  errorElement.textContent = "";
   inputElement.classList.remove(rest.inputErrorClass);
+  errorElement.textContent = "";
 };
 
 const isValid = (formElement, inputElement, rest) => {
