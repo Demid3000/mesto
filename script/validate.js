@@ -10,9 +10,9 @@ function enableValidation() {
   });
 }
 
-function handleFormSubmit(event) {
-  event.preventDefault();
-  const form = event.currentTarget;
+function handleFormSubmit(e) {
+  e.preventDefault();
+  const form = e.currentTarget;
   const isValid = form.checkValidity();
 }
 

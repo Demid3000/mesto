@@ -1,11 +1,11 @@
 "use strict";
 const elements = document.querySelector('.elements');
 
-const image = document.querySelector(".image");
+const image = document.querySelector(".popup_type_image-profile");
 
-const editPopup = document.querySelector(".edit");
+const editPopup = document.querySelector(".popup_type_edit-profile");
 
-const newCardPopup = document.querySelector(".new");
+const newCardPopup = document.querySelector(".popup_type_new-profile");
 
 const popups = document.querySelectorAll(".popup");
 
@@ -22,40 +22,41 @@ const profileInfoText = document.querySelector('.profile__text');
 
 // добавление карточек и форму
 function renderItems() {
-    initialCards.forEach((item) => {
-      renderItem(item);
-    });
-  }
+  initialCards.forEach((item) => {
+    renderItem(item);
+  });
+}
 
-  function renderItem(item) {
-    const newCard = createCard(item);
-    elements.prepend(newCard);
-  }
+function renderItem(item) {
+  const newCard = createCard(item);
+  elements.prepend(newCard);
+}
 
 const itemTamplate = document.querySelector('.template').content;
-function createCard(item){
-const itemCard = itemTamplate.cloneNode(true);
-itemCard.querySelector(".element__text").textContent = item.text;
-itemCard.querySelector(".element__image").alt = item.text;
-itemCard.querySelector(".element__image").src = item.link;
 
-addOpenImageHandler(itemCard, item)
-addLikeHandler(itemCard);
-removeCard(itemCard);
+function createCard(item) {
+  const itemCard = itemTamplate.cloneNode(true);
+  itemCard.querySelector(".element__text").textContent = item.text;
+  itemCard.querySelector(".element__image").alt = item.text;
+  itemCard.querySelector(".element__image").src = item.link;
 
-return itemCard;
+  addOpenImageHandler(itemCard, item)
+  addLikeHandler(itemCard);
+  removeCard(itemCard);
+
+  return itemCard;
 }
 
 // Проверка Лайков
 function addLikeHandler(item) {
-    item.querySelector(".element__like").addEventListener("click", (evt) => {
-      evt.target.classList.toggle("element__like_active");
-    });
-  }
+  item.querySelector(".element__like").addEventListener("click", (evt) => {
+    evt.target.classList.toggle("element__like_active");
+  });
+}
 
 // Удаление карточки
-function removeCard(item){
-  item.querySelector('.element__trash').addEventListener('click', (evt)=>{
+function removeCard(item) {
+  item.querySelector('.element__trash').addEventListener('click', (evt) => {
     evt.target.closest(".element").remove();
   })
 }
@@ -72,7 +73,7 @@ function closePopup(item) {
 
 //Проверка нажатия кнопки редактирования профиля
 editButton.addEventListener("click", () => {
-  nameInput.value = profileInfoName.textContent;  
+  nameInput.value = profileInfoName.textContent;
   jobInput.value = profileInfoText.textContent;
   openPopup(editPopup);
 });
@@ -83,20 +84,12 @@ addButton.addEventListener("click", () => {
   openPopup(newCardPopup);
 });
 
-//Проверка какой попап надо закрыть
-popups.forEach(function (item) {
-  item.addEventListener("click", (evt) => {
-    if (evt.target.classList.contains("popup__close")) {
-      closePopup(item);
-    }
-  });
-});
 
 //Открытие картинки
 const subtitle = image.querySelector(".popup__subtitle");
 const popupImage = image.querySelector(".popup__image");
 function addOpenImageHandler(card, item) {
-    card.querySelector(".element__image").addEventListener("click", (card) => {
+  card.querySelector(".element__image").addEventListener("click", (card) => {
     popupImage.src = item.link;
     popupImage.textContent = item.text;
     subtitle.alt = item.text;
@@ -106,38 +99,36 @@ function addOpenImageHandler(card, item) {
 
 //Проверка в попапе редактирования профиля
 editForm.addEventListener("submit", (evt) => {
-    evt.preventDefault();
-    profileInfoName.textContent = nameInput.value;
-    profileInfoText.textContent = jobInput.value;
-    closePopup(editPopup);
+  evt.preventDefault();
+  profileInfoName.textContent = nameInput.value;
+  profileInfoText.textContent = jobInput.value;
+  closePopup(editPopup);
+  keyHandler(editForm);
 });
 
 //Проверка в попапе добавления карточки
 newCard.addEventListener("submit", (evt) => {
   evt.preventDefault();
+  const place = document.querySelector("#place");
+  const link = document.querySelector("#link");
   const inputValue = { text: place.value, link: link.value };
   renderItem(inputValue);
   closePopup(newCardPopup);
-  newCard.reset();
-  inputValue.addEventListener('keydown', keyHandler);
+  keyHandler(newCard);
+  setSubmitButtonState(newCard);
 });
 renderItems()
 
 //Проверка в input'e на нажатие Enter 
 function keyHandler(evt) {
-  if(evt.key === 'Enter'){
-    editForm(nameInput.value, jobInput.value);
-    newCard(inputValue.value);
-  }
+  evt.key === 'Enter'
 }
-nameInput.addEventListener('keydown', keyHandler);
-jobInput.addEventListener('keydown', keyHandler);
 
 //Проверка какой попап надо закрыть
 popups.forEach(function (item) {
   item.addEventListener("mousedown", (evt) => {
     if (
-      evt.target.classList.contains("popup__close-button") ||
+      evt.target.classList.contains("popup__close") ||
       evt.target.classList.contains("popup")
     ) {
       closePopup(item);
@@ -145,7 +136,7 @@ popups.forEach(function (item) {
   });
   //Закрываем popup при нажатии на Esc
   document.addEventListener("keydown", (evt) => {
-    if (evt.keyCode === 27) {
+    if (evt.key === "Escape") {
       closePopup(item);
     }
   });
