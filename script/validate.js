@@ -1,67 +1,71 @@
-function enableValidation() {
-  const form = document.querySelectorAll(".popup__form");
+const showInputError = (formElement, inputElement, errorMessage, rest) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.add(rest.inputErrorClass);
+  errorElement.textContent = errorMessage;
+};
+const hideInputError = (formElement, inputElement, rest) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  debugger
+  errorElement.textContent = "";
+  inputElement.classList.remove(rest.inputErrorClass);
+};
 
-  form.forEach(function (item) {
-    item.addEventListener("submit", handleFormSubmit);
-  });
-
-  form.forEach(function (item) {
-    item.addEventListener("input", handleFormInput);
-  });
-}
-
-function handleFormSubmit(e) {
-  e.preventDefault();
-  const form = e.currentTarget;
-  const isValid = form.checkValidity();
-}
-
-function handleFormInput(event) {
-  const input = event.target;
-  const form = event.currentTarget;
-
-  // Шаг 1. Найдем невалидные поля и установим их тексты ошибок
-  setCustomError(input);
-  // Шаг 2. Показываем тексты ошибок пользователям
-  setFieldError(input);
-  // Шаг 3. Активируем или деактивируем кнопку
-  setSubmitButtonState(form);
-}
-
-function setCustomError(input) {
-  const validity = input.validity;
-  input.setCustomValidity("");
-  if (validity.tooShort || validity.tooLong) {
-    const currentLength = input.value.length;
-    const min = input.getAttribute("minlength");
-    input.setCustomValidity(
-      `Минимальное количество символов: ${min}. Длина текста сейчас: ${currentLength} символ`
+const isValid = (formElement, inputElement, rest) => {
+  if (!inputElement.validity.valid) {
+    showInputError(
+      formElement,
+      inputElement,
+      inputElement.validationMessage,
+      rest
     );
-  }
-
-  if (input.value === "") {
-    input.setCustomValidity("Вы пропустили это поле");
-  }
-
-  if (validity.typeMismatch) {
-    input.setCustomValidity("Это не ссылка");
-  }
-}
-function setFieldError(input) {
-  const span = document.querySelector(`#${input.id}-error`);
-  span.textContent = input.validationMessage;
-}
-
-function setSubmitButtonState(form) {
-  const button = form.querySelector(".popup__submit-button");
-  const isValid = form.checkValidity();
-  if (isValid) {
-    button.classList.remove("popup__submit-button_disabled");
-    button.removeAttribute("disabled");
   } else {
-    button.classList.add("popup__submit-button_disabled");
-    button.setAttribute("disabled", "disabled");
+    hideInputError(formElement, inputElement, rest);
   }
-}
+};
 
-enableValidation();
+const setEventListeners = (formElement, rest) => {
+  const inputList = Array.from(formElement.querySelectorAll(rest.inputSelector)
+  );
+  const buttonElement = formElement.querySelector(rest.submitButtonSelector);
+  toggleButtonState(inputList, buttonElement, rest);
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener("input", () => {
+      isValid(formElement, inputElement, rest);
+      toggleButtonState(inputList, buttonElement, rest);
+    });
+  });
+};
+
+const enableValidation = ({ formSelector, ...rest }) => {
+  const formList = Array.from(document.querySelectorAll(formSelector));
+  formList.forEach((formElement) => {
+    formElement.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+    });
+    setEventListeners(formElement, rest);
+  });
+};
+
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  });
+};
+
+const toggleButtonState = (inputList, buttonElement, rest) => {
+  if (hasInvalidInput(inputList)) {
+    buttonElement.classList.add(rest.inactiveButtonClass);
+    buttonElement.setAttribute("disabled", "disabled");
+  } else {
+    buttonElement.classList.remove(rest.inactiveButtonClass);
+    buttonElement.removeAttribute("disabled");
+  }
+};
+
+enableValidation({
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__submit-button",
+  inactiveButtonClass: "popup__submit-button_disabled",
+  inputErrorClass: "popup__input-error"
+});

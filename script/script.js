@@ -115,7 +115,7 @@ newCard.addEventListener("submit", (evt) => {
   renderItem(inputValue);
   closePopup(newCardPopup);
   keyHandler(newCard);
-  setSubmitButtonState(newCard);
+  const input = document.querySelectorAll('.popup__input').reset()
 });
 renderItems()
 
