@@ -1,3 +1,4 @@
+"use strict";
 const showInputError = (formElement, inputElement, errorMessage, rest) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(rest.inputErrorClass);
@@ -51,13 +52,21 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
+const activeButtonDisabled = (buttonElement, rest) => {
+  buttonElement.classList.add(rest.inactiveButtonClass);
+  buttonElement.setAttribute("disabled", true);
+}
+
+const noActiveButtonDisabled = (buttonElement, rest) => {
+  buttonElement.classList.remove(rest.inactiveButtonClass);
+  buttonElement.removeAttribute("disabled");
+}
+
 const toggleButtonState = (inputList, buttonElement, rest) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(rest.inactiveButtonClass);
-    buttonElement.setAttribute("disabled", "disabled");
+    activeButtonDisabled(buttonElement, rest);
   } else {
-    buttonElement.classList.remove(rest.inactiveButtonClass);
-    buttonElement.removeAttribute("disabled");
+    noActiveButtonDisabled(buttonElement, rest);
   }
 };
 

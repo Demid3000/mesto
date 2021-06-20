@@ -6,7 +6,7 @@ const image = document.querySelector(".popup_type_image-profile");
 const editPopup = document.querySelector(".popup_type_edit-profile");
 
 const newCardPopup = document.querySelector(".popup_type_new-profile");
-const PopupSubmitButton = newCardPopup.querySelector(".popup__submit-button");
+const popupSubmitButton = newCardPopup.querySelector(".popup__submit-button");
 
 const popups = document.querySelectorAll(".popup");
 
@@ -16,8 +16,11 @@ const addButton = document.querySelector(".profile__add-button");
 const editForm = document.querySelector(".popup__form-edit");
 const newCard = document.querySelector(".popup__form-add");
 
+const place = document.querySelector("#place");
+const link = document.querySelector("#link");
 const nameInput = document.querySelector('#lastname');
 const jobInput = document.querySelector('#job');
+
 const profileInfoName = document.querySelector('.profile__name');
 const profileInfoText = document.querySelector('.profile__text');
 
@@ -72,7 +75,7 @@ function openPopup(item) {
 function closePopup(item) {
   item.classList.remove("popup_opened");
   document.removeEventListener("keydown", closePopupEsc);
-}
+};
 
 //Закрываем popup при нажатии на Esc
 function closePopupEsc(evt) {
@@ -81,13 +84,6 @@ function closePopupEsc(evt) {
     closePopup(popupOpened);
   }
 }
-
-//Проверка нажатия кнопки добавления карточки
-addButton.addEventListener("click", () => {
-  PopupSubmitButton.classList.add("popup__submit-button_disabled");
-  PopupSubmitButton.setAttribute("disabled", "disabled");
-  openPopup(newCardPopup);
-});
 
 //Проверка нажатия кнопки редактирования профиля
 editButton.addEventListener("click", () => {
@@ -121,26 +117,16 @@ editForm.addEventListener("submit", (evt) => {
   profileInfoName.textContent = nameInput.value;
   profileInfoText.textContent = jobInput.value;
   closePopup(editPopup);
-  keyHandler(editForm);
 });
 
 //Проверка в попапе добавления карточки
 newCard.addEventListener("submit", (evt) => {
   evt.preventDefault();
-  const place = document.querySelector("#place");
-  const link = document.querySelector("#link");
   const inputValue = { text: place.value, link: link.value };
   renderItem(inputValue);
   closePopup(newCardPopup);
-  keyHandler(newCard);
-  newCard.reset();
 });
 renderItems()
-
-//Проверка в input'e на нажатие Enter 
-function keyHandler(evt) {
-  evt.key === 'Enter'
-}
 
 //Проверка какой попап надо закрыть
 popups.forEach(function (item) {
