@@ -127,6 +127,10 @@ newCard.addEventListener("submit", (evt) => {
   const inputValue = { text: place.value, link: link.value };
   renderItem(inputValue);
   closePopup(newCardPopup);
+  newCard.reset();
+  const inputList = Array.from(newCard.querySelectorAll(".popup__input"));
+  const buttonElement = newCard.querySelector(".popup__submit-button");
+  toggleButtonState(inputList, buttonElement, {inactiveButtonClass: "popup__submit-button_disabled"});
 });
 renderItems()
 
