@@ -25,33 +25,6 @@ const jobInput = document.querySelector('#job');
 const profileInfoName = document.querySelector('.profile__name');
 const profileInfoText = document.querySelector('.profile__text');
 
-// добавление карточек и форму
-function renderItems() {
-  initialCards.forEach((item) => {
-    renderItem(item);
-  });
-}
-
-function renderItem(item) {
-  const newCard = createCard(item);
-  elements.prepend(newCard);
-}
-
-const itemTamplate = document.querySelector('.template').content;
-
-function createCard(item) {
-  const itemCard = itemTamplate.cloneNode(true);
-  itemCard.querySelector(".element__text").textContent = item.text;
-  itemCard.querySelector(".element__image").alt = item.text;
-  itemCard.querySelector(".element__image").src = item.link;
-
-  addOpenImageHandler(itemCard, item)
-  addLikeHandler(itemCard);
-  removeCard(itemCard);
-
-  return itemCard;
-}
-
 // Проверка Лайков
 function addLikeHandler(item) {
   item.querySelector(".element__like").addEventListener("click", (evt) => {
@@ -101,8 +74,6 @@ addButton.addEventListener("click", () => {
 
 
 //Открытие картинки
-const subtitle = image.querySelector(".popup__subtitle");
-const popupImage = image.querySelector(".popup__image");
 function addOpenImageHandler(card, item) {
   card.querySelector(".element__image").addEventListener("click", (card) => {
     popupImage.src = item.link;
@@ -131,7 +102,7 @@ newCard.addEventListener("submit", (evt) => {
   const buttonElement = newCard.querySelector(".popup__submit-button");
   toggleButtonState(inputList, buttonElement, {inactiveButtonClass: "popup__submit-button_disabled"});
 });
-renderItems()
+
 
 //Проверка какой попап надо закрыть
 popups.forEach(function (item) {
