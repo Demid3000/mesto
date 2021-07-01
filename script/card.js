@@ -92,4 +92,4 @@ export function renderItemsStart(object) {
     }
   }
 
-  import { openPopup } from "/index.js";
+  import { openPopup } from "./script.js";
