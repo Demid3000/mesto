@@ -90,6 +90,6 @@ export function renderItemsStart(object) {
     } else {
         const newCard = new Card(object, template);
     }
-  }
+}
 
-  import { openPopup } from "./script.js";
+import { openPopup } from "./script.js";
