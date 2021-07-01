@@ -1,9 +1,4 @@
-//спасибо
 "use strict";
-const elements = document.querySelector('.elements');
-
-const image = document.querySelector(".popup_type_image-profile");
-
 const editPopup = document.querySelector(".popup_type_edit-profile");
 
 const newCardPopup = document.querySelector(".popup_type_new-profile");
@@ -25,22 +20,8 @@ const jobInput = document.querySelector('#job');
 const profileInfoName = document.querySelector('.profile__name');
 const profileInfoText = document.querySelector('.profile__text');
 
-// Проверка Лайков
-function addLikeHandler(item) {
-  item.querySelector(".element__like").addEventListener("click", (evt) => {
-    evt.target.classList.toggle("element__like_active");
-  });
-}
-
-// Удаление карточки
-function removeCard(item) {
-  item.querySelector('.element__trash').addEventListener('click', (evt) => {
-    evt.target.closest(".element").remove();
-  })
-}
-
 //Открытие попапа
-function openPopup(item) {
+export function openPopup(item) {
   item.classList.add("popup_opened");
   document.addEventListener("keydown", closePopupEsc);
 }
@@ -69,19 +50,10 @@ editButton.addEventListener("click", () => {
 
 //Проверка нажатия кнопки добавления карточки
 addButton.addEventListener("click", () => {
+  popupSubmitButton.classList.add("popup__save-button_type_disabled");
+  popupSubmitButton.setAttribute("disabled", "disabled");
   openPopup(newCardPopup);
 });
-
-
-//Открытие картинки
-function addOpenImageHandler(card, item) {
-  card.querySelector(".element__image").addEventListener("click", (card) => {
-    popupImage.src = item.link;
-    popupImage.textContent = item.text;
-    subtitle.alt = item.text;
-    openPopup(image);
-  });
-}
 
 //Проверка в попапе редактирования профиля
 editForm.addEventListener("submit", (evt) => {
@@ -95,12 +67,9 @@ editForm.addEventListener("submit", (evt) => {
 newCard.addEventListener("submit", (evt) => {
   evt.preventDefault();
   const inputValue = { text: place.value, link: link.value };
-  renderItem(inputValue);
+  renderItemsStart(inputValue);
   closePopup(newCardPopup);
   newCard.reset();
-  const inputList = Array.from(newCard.querySelectorAll(".popup__input"));
-  const buttonElement = newCard.querySelector(".popup__submit-button");
-  toggleButtonState(inputList, buttonElement, {inactiveButtonClass: "popup__submit-button_disabled"});
 });
 
 
@@ -115,3 +84,8 @@ popups.forEach(function (item) {
     }
   });
 });
+
+import { renderItemsStart } from "./сard.js";
+import { validate } from "./FormValidator.js";
+
+renderItemsStart();
