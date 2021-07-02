@@ -42,10 +42,10 @@ class Card {
         this._generateCard();
     }
 
-    generateCard(){
-        const photo = this._templateClone.querySelector(".element__image");
+    _generateCard(){
+        const photo = this._itemTamplate.querySelector(".element__image");
 
-        this._templateClone.querySelector(".elements__text").textContent = this._text;
+        this._itemTamplate.querySelector(".element__text").textContent = this._text;
         photo.alt = this._text;
         photo.src = this._link;
         this._addOpenImageHandler();
@@ -55,21 +55,21 @@ class Card {
     }
 
     _likeHandler() {
-        this._templateClone.querySelector(".element__like").addEventListener("click", (evt) => {
+        this._itemTamplate.querySelector(".element__like").addEventListener("click", (evt) => {
           evt.target.classList.toggle("element__like_active");
         });
       }
     
     //Удаление карточки
     _removeHandler() {
-        this._templateClone.querySelector(".elements__trash").addEventListener("click", (evt) => {
-        evt.target.closest(".elements").remove();
+        this._itemTamplate.querySelector(".element__trash").addEventListener("click", (evt) => {
+        evt.target.closest(".element").remove();
         });
     }
 
     // Открытие попапа с картинкой
     _addOpenImageHandler() {
-        this._templateClone.querySelector(".element__image").addEventListener("click", () => {
+        this._itemTamplate.querySelector(".element__image").addEventListener("click", () => {
           openPopup(image);
           popupImage.src = this._link;
           popupImage.alt = this._name;
@@ -85,10 +85,10 @@ class Card {
 export function renderItemsStart(object) {
     if (!object) {
       initialCards.forEach((item) => {
-        const newCard = new Card(item, template);
+        const newCards = new Card(item, template);
       });
     } else {
-        const newCard = new Card(object, template);
+        const newCards = new Card(object, template);
     }
 }
 

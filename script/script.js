@@ -85,7 +85,7 @@ popups.forEach(function (item) {
   });
 });
 
-import { renderItemsStart } from "../сard.js";
+import { renderItemsStart } from "./card.js";
 import { validate } from "./FormValidator.js";
 
 renderItemsStart();
