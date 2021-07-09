@@ -1,3 +1,4 @@
+// Форма для первого попапа
 export class FormValidator {
  constructor(object, editPopup) {
       this._inputSelector = object.inputSelector;
@@ -7,7 +8,7 @@ export class FormValidator {
       this._form = editPopup;
     };
 
-   
+   // Событие по кнопке
     enableValidation() {
       this._form.addEventListener("submit", (evt) => {
             evt.preventDefault();
@@ -16,9 +17,12 @@ export class FormValidator {
     }
 
     _setEventListeners() {
+      // Ищем все инпуты и кнопку 
       this._inputList = Array.from(document.querySelectorAll(this._inputSelector));
       this._buttonElement = document.querySelector(this._submitButtonSelector);
+      this._toggleButtonState();
 
+      //Проверка input'ов на валидность
         this._inputList.forEach((inputElement) => {
           inputElement.addEventListener("input", () => {
             this._isValid(inputElement);
@@ -27,22 +31,25 @@ export class FormValidator {
         });
     }
 
+    // Если валидно, то кнопка загарется иначе тухнет
     _toggleButtonState() {
         if (this._hasInvalidInput()) {
           this._buttonElement.classList.add(this._inactiveButtonClass);
-          this._buttonElement.setAttribute("disabled", true);
+          this._buttonElement.setAttribute("disabled", true); 
         } else {
           this._buttonElement.classList.remove(this._inactiveButtonClass);
           this._buttonElement.removeAttribute("disabled");
         }
       }
 
+      //Возврощает ошибку если поле не валидно
     _hasInvalidInput() {
         return this._inputList.some((inputElement) => {
           return !inputElement.validity.valid;
         });
     }
 
+    //Проверка на валидность
     _isValid(inputElement) {
         if (!inputElement.validity.valid) {
           this._showInputError(inputElement, inputElement.validationMessage);
@@ -64,6 +71,7 @@ export class FormValidator {
     }
 }
 
+// Форма для второго попапа
 export class FormValidatorTwo{
   constructor(object, newCardPopup) {
     this._inputSelector = object.inputSelector;
@@ -73,7 +81,7 @@ export class FormValidatorTwo{
     this._form = newCardPopup;
   };
 
-   
+  // Событие по кнопке
   enableValidation() {
     this._form.addEventListener("submit", (evt) => {
           evt.preventDefault();
@@ -82,10 +90,11 @@ export class FormValidatorTwo{
   }
 
   _setEventListeners() {
+    // Ищем все инпуты и кнопку 
     this._inputList = Array.from(document.querySelectorAll(this._inputSelector));
     this._buttonElement = document.querySelector(this._submitButtonSelector);
     
-  
+     //Проверка input'ов на валидность
       this._inputList.forEach((inputElement) => {
         inputElement.addEventListener("input", () => {
           this._isValid(inputElement);
@@ -94,6 +103,7 @@ export class FormValidatorTwo{
       });
   }
 
+    // Если валидно, то кнопка загарется иначе тухнет
   _toggleButtonState() {
       if (this._hasInvalidInput()) {
         this._buttonElement.classList.add(this._inactiveButtonClass);
@@ -104,12 +114,14 @@ export class FormValidatorTwo{
       }
     }
 
+  //Возврощает ошибку если поле не валидно
   _hasInvalidInput() {
       return this._inputList.some((inputElement) => {
         return !inputElement.validity.valid;
       });
   }
 
+  //Проверка на валидность
   _isValid(inputElement) {
       if (!inputElement.validity.valid) {
         this._showInputError(inputElement, inputElement.validationMessage);
