@@ -20,19 +20,18 @@ export class FormValidator {
       // Ищем все инпуты и кнопку 
       this._inputList = Array.from(document.querySelectorAll(this._inputSelector));
       this._buttonElement = document.querySelector(this._submitButtonSelector);
-      this._toggleButtonState();
 
       //Проверка input'ов на валидность
         this._inputList.forEach((inputElement) => {
           inputElement.addEventListener("input", () => {
             this._isValid(inputElement);
-            this._toggleButtonState();
+            this.toggleButtonState();
           });
         });
     }
 
     // Если валидно, то кнопка загарется иначе тухнет
-    _toggleButtonState() {
+   toggleButtonState() {
         if (this._hasInvalidInput()) {
           this._buttonElement.classList.add(this._inactiveButtonClass);
           this._buttonElement.setAttribute("disabled", true); 
@@ -98,13 +97,13 @@ export class FormValidatorTwo{
       this._inputList.forEach((inputElement) => {
         inputElement.addEventListener("input", () => {
           this._isValid(inputElement);
-          this._toggleButtonState();
+          this.toggleButtonState();
         });
       });
   }
 
     // Если валидно, то кнопка загарется иначе тухнет
-  _toggleButtonState() {
+  toggleButtonState() {
       if (this._hasInvalidInput()) {
         this._buttonElement.classList.add(this._inactiveButtonClass);
         this._buttonElement.setAttribute("disabled", "disabled");
