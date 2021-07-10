@@ -18,23 +18,23 @@ export class FormValidator {
 
     _setEventListeners() {
       // Ищем все инпуты и кнопку 
-      this._inputList = Array.from(document.querySelectorAll(this._inputSelector));
-      this._buttonElement = document.querySelector(this._submitButtonSelector);
+      this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
+      this._buttonElement = this._form.querySelector(this._submitButtonSelector);
 
       //Проверка input'ов на валидность
         this._inputList.forEach((inputElement) => {
           inputElement.addEventListener("input", () => {
             this._isValid(inputElement);
-            this.toggleButtonState();
+            this._toggleButtonState();
           });
         });
     }
 
     // Если валидно, то кнопка загарется иначе тухнет
-   toggleButtonState() {
+   _toggleButtonState() {
         if (this._hasInvalidInput()) {
           this._buttonElement.classList.add(this._inactiveButtonClass);
-          this._buttonElement.setAttribute("disabled", true); 
+          this._buttonElement.setAttribute("disabled", "disabled"); 
         } else {
           this._buttonElement.classList.remove(this._inactiveButtonClass);
           this._buttonElement.removeAttribute("disabled");
@@ -77,12 +77,12 @@ export class FormValidatorTwo{
     this._submitButtonSelector = object.submitButtonSelector;
     this._inactiveButtonClass = object.inactiveButtonClass;
     this._inputErrorClass = object.inputErrorClass;
-    this._form = newCardPopup;
+    this._formCard = newCardPopup;
   };
 
   // Событие по кнопке
   enableValidation() {
-    this._form.addEventListener("submit", (evt) => {
+    this._formCard.addEventListener("submit", (evt) => {
           evt.preventDefault();
         });
     this._setEventListeners();
@@ -90,20 +90,20 @@ export class FormValidatorTwo{
 
   _setEventListeners() {
     // Ищем все инпуты и кнопку 
-    this._inputList = Array.from(document.querySelectorAll(this._inputSelector));
-    this._buttonElement = document.querySelector(this._submitButtonSelector);
+    this._inputList = Array.from(this._formCard.querySelectorAll(this._inputSelector));
+    this._buttonElement = this._formCard.querySelector(this._submitButtonSelector);
     
      //Проверка input'ов на валидность
       this._inputList.forEach((inputElement) => {
         inputElement.addEventListener("input", () => {
           this._isValid(inputElement);
-          this.toggleButtonState();
+          this._toggleButtonState();
         });
       });
   }
 
     // Если валидно, то кнопка загарется иначе тухнет
-  toggleButtonState() {
+  _toggleButtonState() {
       if (this._hasInvalidInput()) {
         this._buttonElement.classList.add(this._inactiveButtonClass);
         this._buttonElement.setAttribute("disabled", "disabled");
