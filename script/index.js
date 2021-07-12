@@ -1,6 +1,6 @@
 "use strict";
 import { Card } from "./Card.js";
-import { FormValidator, FormValidatorTwo } from "./FormValidator.js";
+import { FormValidator } from "./FormValidator.js";
 
 const initialCards = [
   {
@@ -38,7 +38,7 @@ const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
 
 const editForm = document.querySelector(".popup__form-edit");
-const newCard = document.querySelector(".popup__form-add");
+const newCardForm = document.querySelector(".popup__form-add");
 
 const place = document.querySelector("#place");
 const link = document.querySelector("#link");
@@ -49,7 +49,6 @@ const profileInfoName = document.querySelector('.profile__name');
 const profileInfoText = document.querySelector('.profile__text');
 
 const elements = document.querySelector('.elements');
-const template = document.querySelector(".template").content;
 
 //Открытие попапа
 export function openPopup(item) {
@@ -95,14 +94,14 @@ editForm.addEventListener("submit", (evt) => {
 });
 
 //Проверка в попапе добавления карточки
-newCard.addEventListener("submit", (evt) => {
+newCardForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   const inputValue = { text: place.value, link: link.value };
-  const newCard = new Card(inputValue, template);
+  const newCard = new Card(inputValue, '.template');
   const cardElement = newCard.generateCard();
   elements.prepend(cardElement);
   closePopup(newCardPopup);
-  newCard.reset();
+  newCardForm.reset();
 });
 
 
@@ -117,7 +116,7 @@ popups.forEach(function (item) {
 
 (function renderItemsStart() {
   initialCards.forEach((item) => {
-    const newCard = new Card(item, template);
+    const newCard = new Card(item, '.template');
     const cardElement = newCard.generateCard();
     elements.prepend(cardElement);
   });
@@ -130,8 +129,8 @@ const object = {
   inputErrorClass: "popup__input_type_error",
 };
 
-const validateItem = new FormValidator(object, editButton);
+const validateItem = new FormValidator(object, editForm);
 const validate = validateItem.enableValidation();
 
-const validateItemTwo = new FormValidatorTwo(object, newCardPopup);
+const validateItemTwo = new FormValidator(object, newCardForm);
 const validateTwo = validateItemTwo.enableValidation();
