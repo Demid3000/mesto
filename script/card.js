@@ -1,4 +1,3 @@
-"use strict";
 import { openPopup } from "./index.js";
 
 const popupImage = document.querySelector('.popup__image');
