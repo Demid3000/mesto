@@ -49,28 +49,25 @@ const section = new Section(
   elements
 );
 
-function newCardFunction(title, link) {
-  const card = new Card({ title: title, link: link }, template, () => {
-    imagePrewiev.open(title, link);
+function newCardFunction(text, link) {
+  const card = new Card({ text: text, link: link }, template, () => {
+    imagePrewiev.open(text, link);
   });
   return card.createCard();
 }
 
+//Проверка нажатия кнопки добавления карточки
+addButton.addEventListener("click", () => {
+  newCard.open();
+  cardFormValidator.clearInputValidity();
+});
+
 //Проверка нажатия кнопки редактирования профиля
 editButton.addEventListener("click", () => {
-  const userInfo = new UserInfo(profileInfoName, profileInfoText);
-  userInfo.getUserInfo();
-
-  const popupWithEdit = new PopupWithForm({
-    popupSelector: editPopup,
-    handleFormSubmit: (formData) => {
-      userInfo.setUserInfo();
-    }
-  });
-  popupWithEdit.setEventListeners();
-
-  const popup = new Popup(editPopup);
-  popup.open();
+  editProfile.open();
+  firstInput.value = user.getUserInfo().firstInput;
+  secondInput.value = user.getUserInfo().secondInput;
+  editFormValidator.clearInputValidity();
 });
 
 //Проверка в попапе добавления карточки
@@ -104,14 +101,6 @@ const popupWithCard = new PopupWithForm({
   },
 });
 popupWithCard.setEventListeners();
-
-
-//Проверка нажатия кнопки добавления карточки
-addButton.addEventListener("click", () => {
-  popupSubmitButton.classList.add("popup__submit-button_disabled");
-  popupSubmitButton.setAttribute("disabled", "disabled");
-  popup.open();
-});
 
 //автоматическая инициализация рендера 6 карточек
 (function renderItemsStart() {
