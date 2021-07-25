@@ -68,4 +68,16 @@ export class FormValidator {
         inputElement.classList.remove(this._inputErrorClass);
         errorElement.textContent = "";
     }
+
+    clearInputValidity() {
+      const inputList = Array.from(
+        this._form.querySelectorAll(this._inputSelector)
+      );
+      const buttonElement = this._form.querySelector(this._submitButtonSelector);
+      this._toggleButtonState(inputList, buttonElement);
+  
+      inputList.forEach((inputElement) => {
+        this._hideInputError(inputElement);
+      });
+    }
 }
