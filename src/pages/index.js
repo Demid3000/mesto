@@ -70,37 +70,38 @@ editButton.addEventListener("click", () => {
   editFormValidator.clearInputValidity();
 });
 
-//Проверка в попапе добавления карточки
-const popupWithCard = new PopupWithForm({
-  popupSelector: newCardPopup,
-  handleFormSubmit: (formData) => {
-  const inputValue = { text: place.value, link: link.value };
-  const section = new Section({
-      items: inputValue,
-      renderer: () => {
-        const newCard = new Card({
-          item: inputValue,
-          cardSelector: template,
-          handleCardClick: () => {
-            //вызываем функцию, добавляющую попапу с картинкой класс "popup_opened"
-            const popup = new PopupWithImage(
-              image,
-              inputValue.text,
-              inputValue.link
-            );
-            popup.open();
-          },
-        });
-        const cardElement = newCard.createCard();
-        section.addItem(cardElement);
-      },
-    },
-    elements
-  );
-  section.renderer();
+const userPopupWithForm = new PopupWithForm({
+  popupSelector: editPopup,
+  handleFormSubmit: () => {
+    //Изменяем в DOM значения на введенные пользователем
+    user.setUserInfo();
+    userPopupWithForm.close();
   },
 });
-popupWithCard.setEventListeners();
+userPopupWithForm.setEventListeners();
+
+//Проверка на submite в попапе добавления карточки
+const imagePopupWithForm = new PopupWithForm({
+  popupSelector: newCardPopup,
+  handleFormSubmit: () => {
+    //Присваиваем переменной inputValue введенные пользователям значения
+    const inputValue = { text: place.value, link: link.value };
+    const section = new Section(
+      {
+        items: inputValue,
+        renderer: () => {
+          // функция newCardFunction возвращает готовую карточку
+          const result = newCardFunction(inputValue.text, inputValue.link);
+          section.addItem(result);
+        },
+      },
+    );
+    section.renderer();
+    const result = newCardFunction(inputValue.name, inputValue.link);
+    section.addItem(result);
+  },
+});
+imagePopupWithForm.setEventListeners();
 
 //автоматическая инициализация рендера 6 карточек
 (function renderItemsStart() {
@@ -108,7 +109,11 @@ popupWithCard.setEventListeners();
 })();
 
 const validateItem = new FormValidator(object, editForm);
-const validate = validateItem.enableValidation();
+validateItem.enableValidation();
 
 const validateItemTwo = new FormValidator(object, newCardForm);
-const validateTwo = validateItemTwo.enableValidation();
+validateItemTwo.enableValidation();
+
+editProfile.setEventListeners();
+imagePrewiev.setEventListeners();
+newCard.setEventListeners();

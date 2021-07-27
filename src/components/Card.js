@@ -1,12 +1,13 @@
 export class Card {
-    constructor({item, cardSelector, handleCardClick}){
+    constructor({text, link}, cardSelector, handleCardClick, handleDeleteIconClick){
         this._text = item.text;
         this._link = item.link;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
+        this._handleDeleteIconClick = handleDeleteIconClick;
       }
 
-    generateCard(){
+      createCard(){
       this._templateClone = this.getTemplate();
         const photo = this._templateClone.querySelector(".element__image");
         this._templateClone.querySelector(".element__text").textContent = this._text;
@@ -16,7 +17,7 @@ export class Card {
         return this._templateClone
      }
 
-    getTemplate() {
+    _getTemplate() {
       this.cardElements = document.querySelector(this._cardSelector).content.querySelector('.element').cloneNode(true);
       return this.cardElements
     }
@@ -29,7 +30,7 @@ export class Card {
 
       //Удаление карточки
       this._templateClone.querySelector(".element__trash").addEventListener("click", (evt) => {
-        evt.target.closest(".element").remove();
+        this._handleDeleteIconClick(evt);
         });
 
       //Открытие попапа с картинкой
@@ -38,4 +39,4 @@ export class Card {
         this._handleCardClick();
       });
     }
-}
+} 
