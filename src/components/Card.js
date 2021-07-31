@@ -1,10 +1,9 @@
 export class Card {
-    constructor({title, link}, cardSelector, handleCardClick, handleDeleteIconClick){
+    constructor({title, link}, cardSelector, handleCardClick){
         this._title = title;
         this._link = link;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
-        this._handleDeleteIconClick = handleDeleteIconClick;
       }
 
       createCard(){
@@ -30,7 +29,7 @@ export class Card {
 
       //Удаление карточки
       this._templateClone.querySelector(".element__trash").addEventListener("click", (evt) => {
-        this._handleDeleteIconClick(evt);
+        evt.target.closest(".element").remove();
         });
 
       //Открытие попапа с картинкой

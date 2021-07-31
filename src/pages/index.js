@@ -88,7 +88,7 @@ const imagePopupWithForm = new PopupWithForm({
   handleFormSubmit: () => {
     //Присваиваем переменной inputValue введенные пользователям значения
     const inputValue = { title: place.value, link: link.value };
-    const result = newCardFunction(inputValue.text, inputValue.link);
+    const result = newCardFunction(inputValue.name, inputValue.link);
     section.addItem(result);
   },
 });
