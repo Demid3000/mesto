@@ -1,11 +1,11 @@
 // Форма для первого попапа
 export class FormValidator {
- constructor(object, formElement) {
+ constructor(object, form) {
       this._inputSelector = object.inputSelector;
       this._submitButtonSelector = object.submitButtonSelector;
       this._inactiveButtonClass = object.inactiveButtonClass;
       this._inputErrorClass = object.inputErrorClass;
-      this._form = formElement;
+      this._form = form;
     };
 
    // Событие по кнопке
@@ -18,32 +18,34 @@ export class FormValidator {
 
     _setEventListeners() {
       // Ищем все инпуты и кнопку 
-      this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
-      this._buttonElement = this._form.querySelector(this._submitButtonSelector);
-
+      const inputList = Array.from(
+        this._form.querySelectorAll(this._inputSelector)
+      );
+      const buttonElement = this._form.querySelector(this._submitButtonSelector);
+      this._toggleButtonState(inputList, buttonElement);
       //Проверка input'ов на валидность
-        this._inputList.forEach((inputElement) => {
-          inputElement.addEventListener("input", () => {
-            this._isValid(inputElement);
-            this._toggleButtonState();
-          });
+      inputList.forEach((inputElement) => {
+        inputElement.addEventListener("input", () => {
+          this._isValid(inputElement);
+          this._toggleButtonState(inputList, buttonElement);
         });
+      });
     }
 
     // Если валидно, то кнопка загарется иначе тухнет
-   _toggleButtonState() {
-        if (this._hasInvalidInput()) {
-          this._buttonElement.classList.add(this._inactiveButtonClass);
-          this._buttonElement.setAttribute("disabled", "disabled"); 
+   _toggleButtonState(inputList, buttonElement) {
+        if (this._hasInvalidInput(inputList)) {
+          buttonElement.classList.add(this._inactiveButtonClass);
+          buttonElement.setAttribute("disabled", "disabled"); 
         } else {
-          this._buttonElement.classList.remove(this._inactiveButtonClass);
-          this._buttonElement.removeAttribute("disabled");
+          buttonElement.classList.remove(this._inactiveButtonClass);
+          buttonElement.removeAttribute("disabled");
         }
       }
 
       //Возврощает ошибку если поле не валидно
-    _hasInvalidInput() {
-        return this._inputList.some((inputElement) => {
+    _hasInvalidInput(inputList) {
+        return inputList.some((inputElement) => {
           return !inputElement.validity.valid;
         });
     }

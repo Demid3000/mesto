@@ -10,7 +10,7 @@ export default class Popup {
         document.removeEventListener("keydown", this._handleEscClose);
         // Проверяем на клик по крестику или на область вокруг попапа
       } else if (
-        evt.target.classList.contains("popup__close-button") ||
+        evt.target.classList.contains("popup__close") ||
         evt.target.classList.contains("popup")
       ) {
         this.close();

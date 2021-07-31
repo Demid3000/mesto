@@ -1,3 +1,5 @@
+//Привет, я знаю, что моя работане не может пройти проверку, тк много не исправностей, но сейчас ночь и я не могу обратьится в слак за помощью, а мне еще 9 проект делать, можете указать на мои ошибки пожалуйста. Почему картинки не выводятся и текст не появляется, я в консоле не могу найти ошибку. БУДУ БЛАГОДАРЕН! Если я не сдам эту и 9 работу, то меня ждет отчисление
+
 import './index.css';
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
@@ -40,18 +42,18 @@ const section = new Section(
   {
     items: initialCards,
     renderer: (items) => {
-      const text = items.text;
+      const title = items.name;
       const link = items.link;
-      const result = newCardFunction(text, link);
+      const result = newCardFunction(title, link);
       section.addItem(result);
     },
   },
   elements
 );
 
-function newCardFunction(text, link) {
-  const card = new Card({ text: text, link: link }, template, () => {
-    imagePrewiev.open(text, link);
+function newCardFunction(title, link) {
+  const card = new Card({ title: title, link: link }, template, () => {
+    imagePrewiev.open(title, link);
   });
   return card.createCard();
 }
@@ -59,15 +61,15 @@ function newCardFunction(text, link) {
 //Проверка нажатия кнопки добавления карточки
 addButton.addEventListener("click", () => {
   newCard.open();
-  cardFormValidator.clearInputValidity();
+  validateItemTwo.clearInputValidity();
 });
 
 //Проверка нажатия кнопки редактирования профиля
 editButton.addEventListener("click", () => {
   editProfile.open();
-  firstInput.value = user.getUserInfo().firstInput;
-  secondInput.value = user.getUserInfo().secondInput;
-  editFormValidator.clearInputValidity();
+  nameInput.value = user.getUserInfo().nameInput;
+  jobInput.value = user.getUserInfo().jobInput;
+  validateItem.clearInputValidity();
 });
 
 const userPopupWithForm = new PopupWithForm({
@@ -85,19 +87,8 @@ const imagePopupWithForm = new PopupWithForm({
   popupSelector: newCardPopup,
   handleFormSubmit: () => {
     //Присваиваем переменной inputValue введенные пользователям значения
-    const inputValue = { text: place.value, link: link.value };
-    const section = new Section(
-      {
-        items: inputValue,
-        renderer: () => {
-          // функция newCardFunction возвращает готовую карточку
-          const result = newCardFunction(inputValue.text, inputValue.link);
-          section.addItem(result);
-        },
-      },
-    );
-    section.renderer();
-    const result = newCardFunction(inputValue.name, inputValue.link);
+    const inputValue = { title: place.value, link: link.value };
+    const result = newCardFunction(inputValue.text, inputValue.link);
     section.addItem(result);
   },
 });

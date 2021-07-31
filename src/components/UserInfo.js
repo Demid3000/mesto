@@ -1,16 +1,18 @@
 import { nameInput, jobInput } from "../utils/constants";
 
 export default class UserInfo {
-  constructor(profileTitle, profileSubTitle) {
-    this._profileTitle = profileTitle;
-    this._profileSubTitle = profileSubTitle;
+  constructor(profileInfoName, profileInfoText) {
+    this._profileInfoName = profileInfoName;
+    this._profileInfoText = profileInfoText;
   }
   getUserInfo() {
-    nameInput.value = this._profileTitle.textContent;
-    jobInput.value = this._profileSubTitle.textContent;
+    return{
+      nameInput: this._profileInfoName.textContent,
+      jobInput: this._profileInfoText.textContent
+    };
   }
   setUserInfo() {
-    this._profileTitle.textContent = nameInput.value;
-    this._profileSubTitle.textContent = jobInput.value;
+    this._profileInfoName.textContent = nameInput.value;
+    this._profileInfoText.textContent = jobInput.value;
   }
 }
